@@ -36,7 +36,7 @@
                     android:gravity="center"
                     android:text="Subtitle 1" />
 
-                <android.support.v7.widget.RecyclerView
+                <com.skysoft.slobodyanuk.recyclerpagers.UpdatingRecyclerView
                     android:id="@+id/list_f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

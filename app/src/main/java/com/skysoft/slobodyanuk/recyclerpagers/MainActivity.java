@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.azoft.carousellayoutmanager.CarouselLayoutManager;
 import com.skysoft.slobodyanuk.recyclerpagers.adapters.HorizontalRecyclerAdapter;
 import com.skysoft.slobodyanuk.recyclerpagers.adapters.VerticalRecyclerAdapter;
 import com.skysoft.slobodyanuk.recyclerpagers.models.HorizontalListData;
@@ -20,7 +22,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.list_f)
-    RecyclerView fList;
+    UpdatingRecyclerView fList;
 
     @BindView(R.id.list_s)
     RecyclerView sList;
@@ -65,7 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
         fList.setAdapter(fAdapter);
         fList.setNestedScrollingEnabled(false);
-        fList.setLayoutManager(new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false));
+        RecyclerViewMargin margin = new RecyclerViewMargin(-25, 0);
+        GridLayoutManager manager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
+        fList.addItemDecoration(margin);
+        fList.setLayoutManager(manager);
+        fList.setViewModifier(new FadeViewModifier());
 
         sList.setAdapter(sAdapter);
         sList.setNestedScrollingEnabled(false);
