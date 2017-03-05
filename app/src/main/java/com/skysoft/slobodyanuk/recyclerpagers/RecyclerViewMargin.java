@@ -6,12 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 public class RecyclerViewMargin extends RecyclerView.ItemDecoration {
-    private final int columns;
     private int margin;
 
-    public RecyclerViewMargin(@IntRange(from = -50) int margin, @IntRange(from = 0) int columns) {
+    public RecyclerViewMargin(@IntRange(from = -50) int margin) {
         this.margin = margin;
-        this.columns = columns;
 
     }
 
@@ -20,7 +18,14 @@ public class RecyclerViewMargin extends RecyclerView.ItemDecoration {
                                RecyclerView parent, RecyclerView.State state) {
 
         int position = parent.getChildLayoutPosition(view);
-        outRect.right = margin;
-        outRect.left = margin;
+//        outRect.right = margin;
+//        outRect.left = margin;
+
+        if (parent.getChildAdapterPosition(view) == 0) {
+            outRect.left = margin;
+        } else if (parent.getChildAdapterPosition(view) == state.getItemCount() - 1) {
+            outRect.right = margin;
+        }
+
     }
 }

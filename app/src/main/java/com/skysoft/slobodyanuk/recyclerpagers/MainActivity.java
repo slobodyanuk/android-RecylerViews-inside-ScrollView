@@ -1,13 +1,12 @@
 package com.skysoft.slobodyanuk.recyclerpagers;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.Display;
 
-import com.azoft.carousellayoutmanager.CarouselLayoutManager;
 import com.skysoft.slobodyanuk.recyclerpagers.adapters.HorizontalRecyclerAdapter;
 import com.skysoft.slobodyanuk.recyclerpagers.adapters.VerticalRecyclerAdapter;
 import com.skysoft.slobodyanuk.recyclerpagers.models.HorizontalListData;
@@ -67,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
         fList.setAdapter(fAdapter);
         fList.setNestedScrollingEnabled(false);
-        RecyclerViewMargin margin = new RecyclerViewMargin(-25, 0);
+        Display display = getWindowManager().getDefaultDisplay();
+        int width = display.getWidth();
         GridLayoutManager manager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
-        fList.addItemDecoration(margin);
         fList.setLayoutManager(manager);
+        RecyclerViewMargin margin = new RecyclerViewMargin(width / 2 - 200);
+        fList.addItemDecoration(margin);
         fList.setViewModifier(new FadeViewModifier());
 
         sList.setAdapter(sAdapter);

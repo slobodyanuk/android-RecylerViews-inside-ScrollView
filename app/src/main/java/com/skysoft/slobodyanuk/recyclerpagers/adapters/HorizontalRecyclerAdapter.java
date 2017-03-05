@@ -2,12 +2,11 @@ package com.skysoft.slobodyanuk.recyclerpagers.adapters;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.skysoft.slobodyanuk.recyclerpagers.R;
@@ -18,8 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by serhii_slobodyanuk on 01.03.17.
@@ -56,7 +53,7 @@ public class HorizontalRecyclerAdapter extends RecyclerView.Adapter<HorizontalRe
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.item_root)
-        LinearLayout mItemRoot;
+        RelativeLayout mItemRoot;
 
         @BindView(R.id.item_title)
         TextView title;
